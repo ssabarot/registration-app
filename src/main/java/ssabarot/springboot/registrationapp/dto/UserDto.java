@@ -23,7 +23,6 @@ public class UserDto {
 
     @Past(message = "The date of birth must be in the past.")
     @BirthDateConstraint()
-    @NotNull(message = "The date of birth is required.")
     private Date birthdate;
 
     @Pattern(regexp = "France", flags = Pattern.Flag.CASE_INSENSITIVE, message = "The user must be residing in France.")
