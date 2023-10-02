@@ -13,12 +13,12 @@ import java.util.Date;
 /**
  * Represents an Entity "User" to persist the information.
  */
-
 @Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class User {
     private String name;
 
     @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @BirthDateConstraint()
     @Column(name="birthdate", nullable = false)
     private Date birthdate;

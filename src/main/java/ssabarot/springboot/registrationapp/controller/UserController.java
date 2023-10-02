@@ -23,6 +23,11 @@ public class UserController {
 
     private final UserService userService;
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<UserDto> findUserById(@PathVariable("id") Long id) {
+        return userService.findUserById(id).map(ResponseEntity::ok).orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found."));
+    }
+
     @GetMapping("")
     public ResponseEntity<List<UserDto>> getAllUsers() {
         List<UserDto> userDtosList = new ArrayList<>(userService.findAllUsers());
@@ -32,11 +37,6 @@ public class UserController {
         }
 
         return new ResponseEntity<>(userDtosList, HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<UserDto> findUserById(@PathVariable("id") Long id) {
-        return userService.findUserById(id).map(ResponseEntity::ok).orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found."));
     }
 
     @PostMapping

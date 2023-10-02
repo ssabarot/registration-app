@@ -1,7 +1,6 @@
 package ssabarot.springboot.registrationapp.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
@@ -15,6 +14,7 @@ import java.util.Date;
  * Represents the Data Transfer Object (DTO) to create a user.
  */
 @Data
+@Builder
 public class UserDto {
     private Long id;
 
