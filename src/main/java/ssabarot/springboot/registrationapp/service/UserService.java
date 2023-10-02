@@ -9,7 +9,6 @@ import ssabarot.springboot.registrationapp.mapper.UserMapper;
 import ssabarot.springboot.registrationapp.model.User;
 import ssabarot.springboot.registrationapp.repository.UserRepository;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,6 +30,7 @@ public class UserService implements IUserService {
     @Override
     public List<UserDto> findAllUsers() {
         List<User> usersList = Streamable.of(userRepository.findAll()).toList();
+
         return usersList.stream().map(userMapper::mapUserToDto).collect(Collectors.toList());
     }
 
