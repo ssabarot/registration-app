@@ -1,213 +1,88 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/ssabarot/registration-app">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="registration-logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Registration Application</h3>
 
   <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/ssabarot/registration-app"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/ssabarot/registration-app">View Demo</a>
-    ·
-    <a href="https://github.com/ssabarot/registration-app/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/ssabarot/registration-app/issues">Request Feature</a>
+    Registration Application with REST api controller and CRUD methods.
   </p>
 </div>
 
 
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Here is a simple Spring Boot project with API that exposes 3 services :
+- getAllUsers() to retrieve the list of users registered
+- getUserById(id) to find a user by his id
+- createUser(user) to create a new user
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `ssabarot`, `registration-app`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-### Built With
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+This app uses the following technologies :
+- Java version 21
+- Spring boot version 3
+- H2 embedded database
 
 
+## Prerequisites
+- Java 21
+- Maven
+- Git
+- Postman (collection file [here](https://github.com/ssabarot/registration-app/postman_collection.json))
+- an IDE (for example IntelliJ or Eclipse)
 
-<!-- GETTING STARTED -->
-## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+## Installation
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/ssabarot/registration-app.git
    ```
-3. Install NPM packages
+2. Install dependencies, compile and run tests with maven
    ```sh
-   npm install
+   mvn clean install
    ```
-4. Enter your API in `config.js`
+3. Launch the spring-boot application with maven
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   mvn spring-boot:run
    ```
+4. Connect to H2 database with username at http://localhost:8080/users/h2-ui
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## API Description
 
-<!-- USAGE EXAMPLES -->
-## Usage
+Link to the Swagger UI documentation : http://localhost:8080/swagger-ui-api.html
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Once the server is started, you can use the 3 following API :
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/ssabarot/registration-app/issues) for a full list of proposed features (and known issues).
+- GET http://localhost:8080/api/users/{id} to retrieve a user by his id.
+- GET http://localhost:8080/api/users to retrieve all users.
+- POST http://localhost:8080/api/users to create a new user.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Project configuration
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+The configuration file is [application.properties](https://github.com/ssabarot/registration-app/src/main/resources/application.properties)
+- Root context is /api/users
+- Database is h2 in memory and url is jdbc:h2:mem:registrationdb
+- Database console is enabled on /h2-ui
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/ssabarot/registration-app](https://github.com/ssabarot/registration-app)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/ssabarot/registration-app.svg?style=for-the-badge
 [contributors-url]: https://github.com/ssabarot/registration-app/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/ssabarot/registration-app.svg?style=for-the-badge
