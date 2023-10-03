@@ -3,22 +3,19 @@ package ssabarot.springboot.registrationapp.validation;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 
-public class BirthDateValidator implements ConstraintValidator<BirthDateConstraint, Date> {
+public class BirthDateValidator implements ConstraintValidator<BirthDateConstraint, LocalDate> {
     @Override
-    public boolean isValid(final Date valueToValidate, final ConstraintValidatorContext context) {
+    public boolean isValid(final LocalDate valueToValidate, final ConstraintValidatorContext context) {
         if (valueToValidate == null) {
             context.buildConstraintViolationWithTemplate(
                     "The date of birth is required.").addConstraintViolation();
             return false;
         }
 
-        Calendar dateInCalendar = Calendar.getInstance();
-        dateInCalendar.setTime(valueToValidate);
-
-        boolean isOfLegalAge = Calendar.getInstance().get(Calendar.YEAR) - dateInCalendar.get(Calendar.YEAR) >= 18;
+        boolean isOfLegalAge = calculateAge(valueToValidate) >= 18;
 
         if (!isOfLegalAge) {
             context.buildConstraintViolationWithTemplate(
@@ -27,5 +24,10 @@ public class BirthDateValidator implements ConstraintValidator<BirthDateConstrai
         }
 
         return true;
+    }
+
+    public int calculateAge(
+            LocalDate birthDate) {
+        return Period.between(birthDate, LocalDate.now()).getYears();
     }
 }

@@ -1,6 +1,5 @@
 package ssabarot.springboot.registrationapp.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -8,7 +7,7 @@ import lombok.*;
 import ssabarot.springboot.registrationapp.validation.BirthDateConstraint;
 import ssabarot.springboot.registrationapp.validation.GenderEnumConstraint;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Represents an Entity "User" to persist the information.
@@ -29,10 +28,9 @@ public class User {
     private String name;
 
     @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @BirthDateConstraint()
     @Column(name="birthdate", nullable = false)
-    private Date birthdate;
+    private LocalDate birthdate;
 
     @Pattern(regexp = "France", flags = Pattern.Flag.CASE_INSENSITIVE, message = "The user must be residing in France.")
     @NotEmpty(message = "The country is required.")
@@ -44,6 +42,7 @@ public class User {
     private String phoneNumber;
 
     @GenderEnumConstraint(anyOf = {Gender.MALE, Gender.FEMALE, Gender.OTHER})
+    @Enumerated(EnumType.STRING)
     @Column(name="gender")
     private Gender gender;
 }

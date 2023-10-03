@@ -6,10 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -29,7 +26,7 @@ class BirthDateValidatorTest {
 
     @Test
     @DisplayName("Test BirthDate isValid Success")
-    public void testIsValid_ok() throws ParseException {
+    public void testIsValid_ok() {
         // given
         ConstraintValidatorContext.ConstraintViolationBuilder builder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.class);
 
@@ -37,9 +34,7 @@ class BirthDateValidatorTest {
         when(context.buildConstraintViolationWithTemplate(anyString()))
                 .thenReturn(builder);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd", Locale.ENGLISH);
-        String dateInString = "2001-Sep-14";
-        Date birthdate = formatter.parse(dateInString);
+        LocalDate birthdate = LocalDate.of(2001,9,14);
 
         // when
         boolean result = validator.isValid(birthdate, context);
@@ -50,7 +45,7 @@ class BirthDateValidatorTest {
 
     @Test
     @DisplayName("Test BirthDate isValid Fail - BirthDate is not in the past")
-    public void testIsValid_birthdate_not_in_the_past() throws ParseException {
+    public void testIsValid_birthdate_not_in_the_past() {
         // given
         ConstraintValidatorContext.ConstraintViolationBuilder builder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.class);
 
@@ -58,10 +53,7 @@ class BirthDateValidatorTest {
         when(context.buildConstraintViolationWithTemplate(anyString()))
                 .thenReturn(builder);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd", Locale.ENGLISH);
-        String dateInString = "2442-Sep-14";
-        Date birthdate = formatter.parse(dateInString);
-
+        LocalDate birthdate = LocalDate.of(2442, 9, 24);
         // when
         boolean result = validator.isValid(birthdate, context);
 
@@ -71,7 +63,7 @@ class BirthDateValidatorTest {
 
     @Test
     @DisplayName("Test BirthDate isValid Fail - user under 18yo")
-    public void testIsValid_user_under_18_yo() throws ParseException {
+    public void testIsValid_user_under_18_yo() {
         // given
         ConstraintValidatorContext.ConstraintViolationBuilder builder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.class);
 
@@ -79,9 +71,7 @@ class BirthDateValidatorTest {
         when(context.buildConstraintViolationWithTemplate(anyString()))
                 .thenReturn(builder);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd", Locale.ENGLISH);
-        String dateInString = "2018-Sep-14";
-        Date birthdate = formatter.parse(dateInString);
+        LocalDate birthdate = LocalDate.of(2018,9,14);
 
         // when
         boolean result = validator.isValid(birthdate, context);

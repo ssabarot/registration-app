@@ -13,10 +13,9 @@ import ssabarot.springboot.registrationapp.exception.ResourceNotFoundException;
 import ssabarot.springboot.registrationapp.mapper.UserMapper;
 import ssabarot.springboot.registrationapp.mapper.UserMapperImpl;
 import ssabarot.springboot.registrationapp.model.Gender;
-import ssabarot.springboot.registrationapp.model.User;
-import ssabarot.springboot.registrationapp.repository.UserRepository;
 import ssabarot.springboot.registrationapp.service.UserService;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,7 +39,7 @@ class UserControllerTest {
     @DisplayName("Test findUserById Success")
     void test_findUserById_ok() {
         // given
-        UserDto user = UserDto.builder().id(1L).name("dtintin").birthdate(new Date(1990, Calendar.JANUARY,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
+        UserDto user = UserDto.builder().id(1L).name("dtintin").birthdate(LocalDate.of(1990, 1,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
         doReturn(Optional.of(user)).when(userService).findUserById(1L);
 
         // when
@@ -56,7 +55,7 @@ class UserControllerTest {
     @DisplayName("Test findUserById ResourceNotFoundException")
     void test_findUserById_not_found() {
         // given
-        UserDto user = UserDto.builder().id(1L).name("dtintin").birthdate(new Date(1990, Calendar.JANUARY,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
+        UserDto user = UserDto.builder().id(1L).name("dtintin").birthdate(LocalDate.of(1990, 1,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
         doReturn(Optional.of(user)).when(userService).findUserById(1L);
 
         // when + then
@@ -76,9 +75,9 @@ class UserControllerTest {
     void test_getAllUsers_ok() {
         // given
         List<UserDto> userList = new ArrayList<>();
-        UserDto userOne = UserDto.builder().id(1L).name("brichard").birthdate(new Date(2001, Calendar.SEPTEMBER,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
-        UserDto userTwo = UserDto.builder().id(2L).name("ldupuis").birthdate(new Date(1987, Calendar.JUNE,25)).country("France").phoneNumber("0657779149").gender(Gender.FEMALE).build();
-        UserDto userThree = UserDto.builder().id(3L).name("dpetit").birthdate(new Date(1996, Calendar.FEBRUARY,8)).country("France").phoneNumber("0755749447").gender(Gender.OTHER).build();
+        UserDto userOne = UserDto.builder().id(1L).name("brichard").birthdate(LocalDate.of(2001, 9,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
+        UserDto userTwo = UserDto.builder().id(2L).name("ldupuis").birthdate(LocalDate.of(1987, 6,25)).country("France").phoneNumber("0657779149").gender(Gender.FEMALE).build();
+        UserDto userThree = UserDto.builder().id(3L).name("dpetit").birthdate(LocalDate.of(1996, 2,8)).country("France").phoneNumber("0755749447").gender(Gender.OTHER).build();
 
         userList.add(userOne);
         userList.add(userTwo);
@@ -99,7 +98,7 @@ class UserControllerTest {
     @DisplayName("Test createUser Success")
     void test_createUser_ok() {
         // given
-        UserDto userToCreate = UserDto.builder().id(1L).name("lrobert").birthdate(new Date(1993, Calendar.AUGUST,30)).country("France").phoneNumber("0552749249").gender(Gender.FEMALE).build();
+        UserDto userToCreate = UserDto.builder().id(1L).name("lrobert").birthdate(LocalDate.of(1993, 8,30)).country("France").phoneNumber("0552749249").gender(Gender.FEMALE).build();
         when(userService.createUser(userToCreate)).thenReturn(userToCreate);
 
         // when

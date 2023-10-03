@@ -13,6 +13,7 @@ import ssabarot.springboot.registrationapp.model.Gender;
 import ssabarot.springboot.registrationapp.model.User;
 import ssabarot.springboot.registrationapp.repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,7 +37,7 @@ class UserServiceTest {
     @DisplayName("Test findUserById Success")
     void test_findUserById_ok() {
         // given
-        User user = User.builder().id(1L).name("brichard").birthdate(new Date(2001, Calendar.SEPTEMBER,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
+        User user = User.builder().id(1L).name("brichard").birthdate(LocalDate.of(2001, 9,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
         doReturn(Optional.of(user)).when(userRepository).findById(1L);
 
         // when
@@ -52,7 +53,7 @@ class UserServiceTest {
     @DisplayName("Test findUserById NotFound")
     void test_findUserById_notFound() {
         // given
-        User user = User.builder().id(1L).name("brichard").birthdate(new Date(2001, Calendar.SEPTEMBER,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
+        User user = User.builder().id(1L).name("brichard").birthdate(LocalDate.of(2001, 9,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
         doReturn(Optional.of(user)).when(userRepository).findById(1L);
 
         // when
@@ -68,9 +69,9 @@ class UserServiceTest {
     void test_findAllUsers_ok() {
         // given
         List<User> userList = new ArrayList<>();
-        User userOne = User.builder().id(1L).name("brichard").birthdate(new Date(2001, Calendar.SEPTEMBER,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
-        User userTwo = User.builder().id(2L).name("ldupuis").birthdate(new Date(1987, Calendar.JUNE,25)).country("France").phoneNumber("0657779149").gender(Gender.FEMALE).build();
-        User userThree = User.builder().id(3L).name("dpetit").birthdate(new Date(1996, Calendar.FEBRUARY,8)).country("France").phoneNumber("0755749447").gender(Gender.OTHER).build();
+        User userOne = User.builder().id(1L).name("brichard").birthdate(LocalDate.of(2001, 9,11)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
+        User userTwo = User.builder().id(2L).name("ldupuis").birthdate(LocalDate.of(1987, 6,25)).country("France").phoneNumber("0657779149").gender(Gender.FEMALE).build();
+        User userThree = User.builder().id(3L).name("dpetit").birthdate(LocalDate.of(1996, 2,8)).country("France").phoneNumber("0755749447").gender(Gender.OTHER).build();
 
         userList.add(userOne);
         userList.add(userTwo);
@@ -105,7 +106,7 @@ class UserServiceTest {
     @DisplayName("Test createUser Success")
     void test_createUser_ok() {
         // given
-        UserDto userToCreate = UserDto.builder().id(1L).name("lrobert").birthdate(new Date(1993, Calendar.AUGUST,30)).country("France").phoneNumber("0552749249").gender(Gender.FEMALE).build();
+        UserDto userToCreate = UserDto.builder().id(1L).name("lrobert").birthdate(LocalDate.of(1993, 8,30)).country("France").phoneNumber("0552749249").gender(Gender.FEMALE).build();
 
         // when
         userService.createUser(userToCreate);
