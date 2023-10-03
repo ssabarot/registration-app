@@ -37,16 +37,11 @@ public class UserController {
     /**
      * GET method to retrieve all users
      *
-     * @return a {@link List<UserDto>} corresponding to the list of all users or a NO_CONTENT status if the list is empty
+     * @return a {@link List<UserDto>} corresponding to the list of all users or an empty array if there are no users in the list
      */
     @GetMapping("")
     public ResponseEntity<List<UserDto>> getAllUsers() {
         List<UserDto> userDtosList = new ArrayList<>(userService.findAllUsers());
-
-        if (userDtosList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
         return new ResponseEntity<>(userDtosList, HttpStatus.OK);
     }
 
