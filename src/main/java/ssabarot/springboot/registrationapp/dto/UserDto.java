@@ -25,8 +25,8 @@ public class UserDto {
     @NotEmpty(message = "The name is required.")
     private String name;
 
-    @Past(message = "The date of birth must be in the past.")
     @NotNull(message = "The date of birth is required.")
+    @Past(message = "The date of birth must be in the past.")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @BirthDateConstraint()
     private LocalDate birthdate;
