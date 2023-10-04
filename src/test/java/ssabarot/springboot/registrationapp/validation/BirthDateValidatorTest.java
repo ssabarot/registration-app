@@ -8,7 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -34,7 +35,7 @@ class BirthDateValidatorTest {
         when(context.buildConstraintViolationWithTemplate(anyString()))
                 .thenReturn(builder);
 
-        LocalDate birthdate = LocalDate.of(2001,9,14);
+        LocalDate birthdate = LocalDate.of(2001, 9, 14);
 
         // when
         boolean result = validator.isValid(birthdate, context);
@@ -71,7 +72,7 @@ class BirthDateValidatorTest {
         when(context.buildConstraintViolationWithTemplate(anyString()))
                 .thenReturn(builder);
 
-        LocalDate birthdate = LocalDate.of(2018,9,14);
+        LocalDate birthdate = LocalDate.of(2018, 9, 14);
 
         // when
         boolean result = validator.isValid(birthdate, context);

@@ -21,7 +21,9 @@ import ssabarot.springboot.registrationapp.model.User;
 import ssabarot.springboot.registrationapp.repository.UserRepository;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -120,7 +122,7 @@ public class UserControllerIT {
     @DisplayName("IT createUser Success")
     public void it_createUser() throws Exception {
         // given
-        LocalDate birthdate = LocalDate.of(1998, 7,24);
+        LocalDate birthdate = LocalDate.of(1998, 7, 24);
 
         User user = User.builder().id(12L).name("tbonnet").birthdate(birthdate).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
 
@@ -143,7 +145,7 @@ public class UserControllerIT {
     @DisplayName("IT createUser Success with only required fields")
     public void it_createUser_only_required_fields() throws Exception {
         // given
-        LocalDate birthdate = LocalDate.of(1975, 7,24);
+        LocalDate birthdate = LocalDate.of(1975, 7, 24);
 
         User user = User.builder().id(4L).name("ldurand").birthdate(birthdate).country("France").build();
 
@@ -166,7 +168,7 @@ public class UserControllerIT {
     @DisplayName("IT createUser Success with country in lower case")
     public void it_createUser_with_country_in_lower_case() throws Exception {
         // given
-        LocalDate birthdate = LocalDate.of(1984, 8,6);
+        LocalDate birthdate = LocalDate.of(1984, 8, 6);
 
         User user = User.builder().id(3L).name("dthomas").birthdate(birthdate).country("france").phoneNumber("+33658749141").gender(Gender.MALE).build();
 
@@ -203,7 +205,7 @@ public class UserControllerIT {
     @DisplayName("IT createUser Fail - missing field name")
     void it_createUser_missing_name() throws Exception {
         // given
-        LocalDate birthdate = LocalDate.of(1998, 7,24);
+        LocalDate birthdate = LocalDate.of(1998, 7, 24);
 
         User user = User.builder().id(7L).birthdate(birthdate).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
 
@@ -224,7 +226,7 @@ public class UserControllerIT {
     @DisplayName("IT createUser Fail - user not residing in France")
     void it_createUser_not_residing_in_france() throws Exception {
         // given
-        LocalDate birthdate = LocalDate.of(1998, 7,24);
+        LocalDate birthdate = LocalDate.of(1998, 7, 24);
 
         User user = User.builder().id(12L).name("tbonnet").birthdate(birthdate).country("Spain").phoneNumber("+33658749141").gender(Gender.MALE).build();
 
@@ -245,7 +247,7 @@ public class UserControllerIT {
     @DisplayName("IT createUser Fail - user under 18yo")
     void it_createUser_user_under_18() throws Exception {
         // given
-        LocalDate birthdate = LocalDate.of(2019, 7,24);
+        LocalDate birthdate = LocalDate.of(2019, 7, 24);
 
         User user = User.builder().id(12L).name("tbonnet").birthdate(birthdate).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
 
@@ -266,7 +268,7 @@ public class UserControllerIT {
     @DisplayName("IT createUser Fail - invalid phone number")
     void it_createUser_invalid_phone_number() throws Exception {
         // given
-        LocalDate birthdate = LocalDate.of(1999, 7,24);
+        LocalDate birthdate = LocalDate.of(1999, 7, 24);
 
         User user = User.builder().id(12L).name("tbonnet").birthdate(birthdate).country("France").phoneNumber("+34658749141").gender(Gender.MALE).build();
 

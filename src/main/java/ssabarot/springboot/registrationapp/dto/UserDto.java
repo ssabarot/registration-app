@@ -6,7 +6,8 @@ import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import ssabarot.springboot.registrationapp.model.Gender;
 import ssabarot.springboot.registrationapp.validation.BirthDateConstraint;
@@ -28,10 +29,10 @@ public class UserDto {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @NotNull(message = "The date of birth is required.")
-    @BirthDateConstraint(groups=SecondStepValidation.class)
+    @BirthDateConstraint(groups = SecondStepValidation.class)
     private LocalDate birthdate;
 
-    @Pattern(groups=SecondStepValidation.class, regexp = "France", flags = Pattern.Flag.CASE_INSENSITIVE, message = "The user must be residing in France.")
+    @Pattern(groups = SecondStepValidation.class, regexp = "France", flags = Pattern.Flag.CASE_INSENSITIVE, message = "The user must be residing in France.")
     @NotEmpty(message = "The country is required.")
     private String country;
 
@@ -42,6 +43,7 @@ public class UserDto {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    public interface SecondStepValidation {}
+    public interface SecondStepValidation {
+    }
 
 }

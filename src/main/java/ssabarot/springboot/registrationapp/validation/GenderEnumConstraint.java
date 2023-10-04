@@ -13,8 +13,11 @@ import java.lang.annotation.*;
 public @interface GenderEnumConstraint {
 
     Gender[] anyOf();
+
     String message() default "Gender must be any of {anyOf}.";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 
 }

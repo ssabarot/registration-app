@@ -1,7 +1,10 @@
 package ssabarot.springboot.registrationapp.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -19,19 +22,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="birthdate", nullable = false)
+    @Column(name = "birthdate", nullable = false)
     private LocalDate birthdate;
 
-    @Column(name="country", nullable = false)
+    @Column(name = "country", nullable = false)
     private String country;
 
-    @Column(name="phoneNumber")
+    @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @Column(name="gender")
+    @Column(name = "gender")
     private Gender gender;
 }

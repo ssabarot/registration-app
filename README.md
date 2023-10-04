@@ -19,27 +19,27 @@
   </p>
 </div>
 
-
 ## About The Project
 
 Here is a simple Spring Boot project with API that exposes 3 services :
+
 - getAllUsers() to retrieve the list of users registered
 - getUserById(id) to find a user by his id
 - createUser(user) to create a new user
 
 This app uses the following technologies :
+
 - Java version 21
 - Spring boot version 3
 - H2 embedded database
 
-
 ## Prerequisites
+
 - Java 21
 - Maven
 - Git
 - Postman (collection file [here](https://github.com/ssabarot/registration-app/postman_collection.json))
 - an IDE (for example IntelliJ or Eclipse)
-
 
 ## Installation
 
@@ -59,7 +59,6 @@ This app uses the following technologies :
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## API Description
 
 Link to the Swagger UI documentation : http://localhost:8080/swagger-ui-api.html
@@ -72,10 +71,11 @@ Once the server is started, you can use the 3 following API :
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## Project configuration
 
-The configuration file is [application.properties](https://github.com/ssabarot/registration-app/src/main/resources/application.properties)
+The configuration file
+is [application.properties](https://github.com/ssabarot/registration-app/src/main/resources/application.properties)
+
 - Root context is /api/users
 - Database is h2 in memory and url is jdbc:h2:mem:registrationdb
 - Database console is enabled on /h2-ui
@@ -84,13 +84,23 @@ The configuration file is [application.properties](https://github.com/ssabarot/r
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/ssabarot/registration-app.svg?style=for-the-badge
+
 [contributors-url]: https://github.com/ssabarot/registration-app/graphs/contributors
+
 [forks-shield]: https://img.shields.io/github/forks/ssabarot/registration-app.svg?style=for-the-badge
+
 [forks-url]: https://github.com/ssabarot/registration-app/network/members
+
 [stars-shield]: https://img.shields.io/github/stars/ssabarot/registration-app.svg?style=for-the-badge
+
 [stars-url]: https://github.com/ssabarot/registration-app/stargazers
+
 [issues-shield]: https://img.shields.io/github/issues/ssabarot/registration-app.svg?style=for-the-badge
+
 [issues-url]: https://github.com/ssabarot/registration-app/issues
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+
 [linkedin-url]: https://linkedin.com/in/ssabarot
+
 [product-screenshot]: images/screenshot.png
