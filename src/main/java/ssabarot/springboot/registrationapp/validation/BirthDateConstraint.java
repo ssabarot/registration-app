@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface BirthDateConstraint {
-    String message() default "";
+    String message() default "The birth date must be greater or equal than 18.";
     Class <?> [] groups() default {};
     Class <? extends Payload> [] payload() default {};
 }

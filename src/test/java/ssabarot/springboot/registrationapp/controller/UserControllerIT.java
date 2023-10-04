@@ -216,7 +216,7 @@ public class UserControllerIT {
         ResultActions result = mockMvc.perform(request);
 
         // then
-        String error = result.andExpect(MockMvcResultMatchers.status().isInternalServerError()).andReturn().getResolvedException().getMessage();
+        String error = result.andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn().getResolvedException().getMessage();
         assertTrue(StringUtils.contains(error, "The name is required."));
     }
 
@@ -237,7 +237,7 @@ public class UserControllerIT {
         ResultActions result = mockMvc.perform(request);
 
         // then
-        String error = result.andExpect(MockMvcResultMatchers.status().isInternalServerError()).andReturn().getResolvedException().getMessage();
+        String error = result.andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn().getResolvedException().getMessage();
         assertTrue(StringUtils.contains(error, "The user must be residing in France."));
     }
 
@@ -258,7 +258,7 @@ public class UserControllerIT {
         ResultActions result = mockMvc.perform(request);
 
         // then
-        String error = result.andExpect(MockMvcResultMatchers.status().isInternalServerError()).andReturn().getResolvedException().getMessage();
+        String error = result.andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn().getResolvedException().getMessage();
         assertTrue(StringUtils.contains(error, "The birth date must be greater or equal than 18."));
     }
 
@@ -279,7 +279,7 @@ public class UserControllerIT {
         ResultActions result = mockMvc.perform(request);
 
         // then
-        String error = result.andExpect(MockMvcResultMatchers.status().isInternalServerError()).andReturn().getResolvedException().getMessage();
+        String error = result.andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn().getResolvedException().getMessage();
         assertTrue(StringUtils.contains(error, "The phone number should start with '+33' or '0' and followed by 9 digits."));
     }
 

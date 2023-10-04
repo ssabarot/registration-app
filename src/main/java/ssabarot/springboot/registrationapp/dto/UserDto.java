@@ -2,9 +2,9 @@ package ssabarot.springboot.registrationapp.dto;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,19 +19,19 @@ import java.time.LocalDate;
  */
 @Data
 @Builder
+@GroupSequence({UserDto.class, UserDto.SecondStepValidation.class})
 public class UserDto {
     private Long id;
 
     @NotEmpty(message = "The name is required.")
     private String name;
 
-    @NotNull(message = "The date of birth is required.")
-    @Past(message = "The date of birth must be in the past.")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @BirthDateConstraint()
+    @NotNull(message = "The date of birth is required.")
+    @BirthDateConstraint(groups=SecondStepValidation.class)
     private LocalDate birthdate;
 
-    @Pattern(regexp = "France", flags = Pattern.Flag.CASE_INSENSITIVE, message = "The user must be residing in France.")
+    @Pattern(groups=SecondStepValidation.class, regexp = "France", flags = Pattern.Flag.CASE_INSENSITIVE, message = "The user must be residing in France.")
     @NotEmpty(message = "The country is required.")
     private String country;
 
@@ -41,4 +41,7 @@ public class UserDto {
     @GenderEnumConstraint(anyOf = {Gender.MALE, Gender.FEMALE, Gender.OTHER})
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    public interface SecondStepValidation {}
+
 }

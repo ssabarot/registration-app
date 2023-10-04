@@ -10,20 +10,10 @@ public class BirthDateValidator implements ConstraintValidator<BirthDateConstrai
     @Override
     public boolean isValid(final LocalDate valueToValidate, final ConstraintValidatorContext context) {
         if (valueToValidate == null) {
-            context.buildConstraintViolationWithTemplate(
-                    "The date of birth is required.").addConstraintViolation();
             return false;
         }
 
-        boolean isOfLegalAge = calculateAge(valueToValidate) >= 18;
-
-        if (!isOfLegalAge) {
-            context.buildConstraintViolationWithTemplate(
-                    "The birth date must be greater or equal than 18.").addConstraintViolation();
-            return false;
-        }
-
-        return true;
+        return calculateAge(valueToValidate) >= 18;
     }
 
     public int calculateAge(
