@@ -31,7 +31,7 @@ public class UserService implements IUserService {
     public List<UserDto> findAllUsers() {
         List<User> usersList = Streamable.of(userRepository.findAll()).toList();
 
-        return usersList.stream().map(userMapper::mapUserToDto).collect(Collectors.toList());
+        return usersList.stream().map(userMapper::mapUserToDto).toList();
     }
 
     @Override

@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserControllerIT {
+class UserControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
@@ -49,7 +49,7 @@ public class UserControllerIT {
 
     @Test
     @DisplayName("IT getAllUsers Success")
-    public void ti_getAllUsers() throws Exception {
+    void ti_getAllUsers() throws Exception {
         // given
         User user1 = User.builder().id(13L).name("gdubreuil").birthdate(LocalDate.of(2003, 8, 12)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
         User user2 = User.builder().id(9L).name("tloumy").birthdate(LocalDate.of(1999, 4, 9)).country("France").phoneNumber("+33758449149").gender(Gender.OTHER).build();
@@ -79,7 +79,7 @@ public class UserControllerIT {
 
     @Test
     @DisplayName("IT getUserById Success")
-    public void ti_getUserById() throws Exception {
+    void ti_getUserById() throws Exception {
         // given
         User user = User.builder().id(14L).name("rthomas").birthdate(LocalDate.of(2003, 8, 12)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
 
@@ -101,7 +101,7 @@ public class UserControllerIT {
 
     @Test
     @DisplayName("IT getUserById Fail")
-    public void ti_getUserById_not_found() throws Exception {
+    void ti_getUserById_not_found() throws Exception {
         // given
         User user = User.builder().id(14L).name("rthomas").birthdate(LocalDate.of(2003, 8, 12)).country("France").phoneNumber("+33658749141").gender(Gender.MALE).build();
 
@@ -120,7 +120,7 @@ public class UserControllerIT {
 
     @Test
     @DisplayName("IT createUser Success")
-    public void it_createUser() throws Exception {
+    void it_createUser() throws Exception {
         // given
         LocalDate birthdate = LocalDate.of(1998, 7, 24);
 
@@ -143,7 +143,7 @@ public class UserControllerIT {
 
     @Test
     @DisplayName("IT createUser Success with only required fields")
-    public void it_createUser_only_required_fields() throws Exception {
+    void it_createUser_only_required_fields() throws Exception {
         // given
         LocalDate birthdate = LocalDate.of(1975, 7, 24);
 
@@ -166,7 +166,7 @@ public class UserControllerIT {
 
     @Test
     @DisplayName("IT createUser Success with country in lower case")
-    public void it_createUser_with_country_in_lower_case() throws Exception {
+    void it_createUser_with_country_in_lower_case() throws Exception {
         // given
         LocalDate birthdate = LocalDate.of(1984, 8, 6);
 

@@ -25,7 +25,7 @@ class GenderEnumValidatorTest {
 
     @Test
     @DisplayName("Test GenderEnum isValid Success")
-    public void testIsValid_ok() {
+    void testIsValid_ok() {
         // given
         GenderEnumConstraint constraint = mock(GenderEnumConstraint.class);
         when(constraint.anyOf()).thenReturn(new Gender[]{Gender.MALE, Gender.FEMALE, Gender.OTHER});
@@ -40,17 +40,17 @@ class GenderEnumValidatorTest {
 
     @Test
     @DisplayName("Test GenderEnumValidator throws IllegalArgumentException")
-    public void testIsValid_thenThrowsException() {
+    void testIsValid_thenThrowsException() {
         // given
         GenderEnumConstraint constraint = mock(GenderEnumConstraint.class);
         when(constraint.anyOf()).thenReturn(new Gender[]{Gender.MALE, Gender.FEMALE, Gender.OTHER});
         validator.initialize(constraint);
 
         // when
+
         Throwable exception = assertThrows(
                 IllegalArgumentException.class, () -> {
-                    Gender gender = Gender.valueOf("CAT");
-                    validator.isValid(gender, context);
+                    Gender.valueOf("CAT");
                 }
         );
 

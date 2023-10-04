@@ -27,7 +27,7 @@ class BirthDateValidatorTest {
 
     @Test
     @DisplayName("Test BirthDate isValid Success")
-    public void testIsValid_ok() {
+    void testIsValid_ok() {
         // given
         ConstraintValidatorContext.ConstraintViolationBuilder builder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.class);
 
@@ -46,7 +46,7 @@ class BirthDateValidatorTest {
 
     @Test
     @DisplayName("Test BirthDate isValid Fail - BirthDate is not in the past")
-    public void testIsValid_birthdate_not_in_the_past() {
+    void testIsValid_birthdate_not_in_the_past() {
         // given
         ConstraintValidatorContext.ConstraintViolationBuilder builder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.class);
 
@@ -64,7 +64,7 @@ class BirthDateValidatorTest {
 
     @Test
     @DisplayName("Test BirthDate isValid Fail - user under 18yo")
-    public void testIsValid_user_under_18_yo() {
+    void testIsValid_user_under_18_yo() {
         // given
         ConstraintValidatorContext.ConstraintViolationBuilder builder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.class);
 
