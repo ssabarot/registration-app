@@ -11,7 +11,6 @@ import ssabarot.springboot.registrationapp.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor(onConstructor_ = @Autowired)

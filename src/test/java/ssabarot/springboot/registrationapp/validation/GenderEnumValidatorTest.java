@@ -4,7 +4,8 @@ import jakarta.validation.ConstraintValidatorContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ssabarot.springboot.registrationapp.model.Gender;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +13,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static ssabarot.springboot.registrationapp.model.Gender.FEMALE;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
 class GenderEnumValidatorTest {
     private GenderEnumValidator validator;
     private ConstraintValidatorContext context;
